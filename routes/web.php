@@ -20,3 +20,10 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Users Route
+Route::get('/users', 'UsersController@index')->name('users.all');
+Route::get('/users/create', 'UsersController@create')->name('users.create');
+Route::post('/users/create', 'UsersController@store')->name('users.store');
+Route::get('/password-reset/{username}', 'PasswordController@create')->name('password.create');
+Route::post('/password-reset/{username}', 'PasswordController@store')->name('password.store');

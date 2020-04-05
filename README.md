@@ -68,18 +68,12 @@
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo`, `twitter_handle`, `email`
+This is the backend application for the iDove web platform. The application is monolithic in approach due to high development speed required. However, current extraction of this application to use micro-services instead is planned for. 
 
 
 ### Built With
 
-* []()
-* []()
-* []()
-
-
+* [Laravel](https://laravel.com)
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -88,10 +82,20 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+This is a list of all required dependencies and links to installation procedures.
+
+* Composer
+
+[Get Composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos)
+
+* Hombrew
 ```sh
-npm install npm@latest -g
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+```
+
+* PhP version > 7.0
+```sh
+brew install php 
 ```
 
 ### Installation
@@ -100,9 +104,20 @@ npm install npm@latest -g
 ```sh
 git clone https://github.com/github_username/repo.git
 ```
-2. Install NPM packages
+
+2. Install Composer packages
 ```sh
-npm install
+composer install
+```
+
+3. Install Passport Keys for the API
+```sh
+php artisan install:passport
+```
+
+4. Seed Default User
+```sh 
+php artisan db:seed
 ```
 
 
@@ -146,7 +161,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/chezaguy) - dzabalamacheza@gmail.com
+Macheza Dzabala - [@chezaguy](https://twitter.com/chezaguy) - dzabalamacheza@gmail.com
 
 <!-- Project Link: [https://github.com/github_username/repo](https://github.com/github_username/repo) -->
 
