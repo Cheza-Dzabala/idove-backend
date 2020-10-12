@@ -13,17 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Auth::routes(['register' => false]);
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-// Users Route
-Route::get('/users', 'UsersController@index')->name('users.all');
-Route::get('/users/create', 'UsersController@create')->name('users.create');
-Route::post('/users/create', 'UsersController@store')->name('users.store');
-Route::get('/password-reset/{username}', 'PasswordController@create')->name('password.create');
-Route::post('/password-reset/{username}', 'PasswordController@store')->name('password.store');
+Route::get('/', 'WebsiteController@index');
+Route::get('/forums', 'WebsiteForumsController@index');
+Route::get('/posts/{forum}/{topic}/{post}', 'WebsitePostsController@show');
+Route::get('/idovers', 'WebsiteUsersController@index');
+Route::get('/idovers/{profile}', 'WebsiteUsersController@show');
+Route::get('/projects','WebsiteProjectsController@index');
+Route::get('/projects/{project}','WebsiteProjectsController@show');
+Route::get('/contact-us','WebsiteContactController@index');
+Route::get('/resources','WebsiteResourcesController@index');
+Route::get('/activities','WebsiteActivityController@index');
+Route::get('/resources/download/{resource}','WebsiteResourcesController@show');
+Route::get('/organizers', 'WebsiteOrganizerController@index');
+Route::get('/about', 'WebsiteAboutController@index');

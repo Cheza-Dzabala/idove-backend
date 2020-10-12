@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\UpdateProfile;
+use App\Http\Resources\ProfileResource;
 use App\Profile;
 use App\User;
 use App\Utilities\Images\ImageProcessor;
@@ -99,7 +100,8 @@ class ProfileController extends Controller
      */
     public function show(Profile $profile)
     {
-        $profile_response = Profile::whereSlug($profile->slug)->with(['user', 'work_and_education'])->first();
+        $profile_response = new ProfileResource(Profile::whereSlug($profile->slug)->first());
+
         return response()->json([
             'message' => (!$profile) ? 'No profile available' : 'Your profile',
             'data' =>  $profile_response

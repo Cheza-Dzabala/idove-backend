@@ -10,6 +10,8 @@ class ImageProcessor
     static $AVATAR_PATH  = 'avatars';
     static $COVER_IMAGE_PATH  = 'cover_images';
     static $TRIX_IMAGES  = 'trix';
+    static $IMAGES_PATH = 'images';
+
     /**
      * Resize images and save them to specified path
      *

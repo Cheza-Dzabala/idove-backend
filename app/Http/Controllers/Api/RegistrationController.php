@@ -73,6 +73,6 @@ class RegistrationController extends Controller
 
         return response()->json([
             'message' => 'Successfully activated your account, proceed to login.'
-        ]);
+        ], 200);
     }
 }

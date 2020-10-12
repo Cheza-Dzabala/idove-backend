@@ -1,0 +1,26 @@
+:root {
+    --primary: rgba(26, 86, 50, 1);
+    --primary-dark: rgba(14, 47, 27, 1);
+    --primary-70: rgba(19, 63, 36, 0.7);
+    --primary-50: rgba(33, 110, 62, 0.5);
+    --primary-30: rgba(56, 188, 107, 0.3);
+    --primary-10: rgba(98, 208, 142, 0.1);
+    --logo: #1A5632;
+    --sidebar-icon: #ffffff;
+}
+
+.bg-grad-sidebar {
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        from(rgba(14, 47, 27, 1)),
+        to(#1A5632)
+    );
+
+    background-image: linear-gradient(
+        0deg,
+        (rgba(14, 47, 27, 1),
+        rgba(26, 86, 50, 1)
+    );
+}

@@ -1,103 +1,50 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="{{ asset('css/app.css', true) }}" rel="stylesheet">
+    <link href={{ asset('plugins/splide/splide.min.css', true) }} type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+    <link rel="stylesheet" href={{ asset('plugins/lightbox/css/lightbox.css', true) }} />
+    <link href={{ asset('css/materialdesignicons.min.css', true) }} rel="stylesheet" type="text/css" />
+    <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <style>
-        .level {
-            display: flex;
-            flex: 4;
-            margin: 2px 0 18px 0;
-        }
-        .level .form-inline {
-            flex: 3;
-        }
-
-        .form-inline button {
-            margin-left: 10px;
-        }
-        .card-action {
-            font-weight: 600;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-    </style>
+    <title>iDove</title>
 </head>
+
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->username }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
-            <div class="container">
-                <div class="col-md-8">
-                    @include('layouts.flash_messages')
-                </div>
-            </div>
-            @yield('content')
-        </main>
+    <div class="bg-au-green px-96 flex flex-row-reverse py-3 px-5">
+        <p class="text-white text-xs">English</p>
     </div>
+    @include('website.header.second_bar')
+    <div class="px-96 flex flex-row justify-between py-10"">
+       <a href=" /"> <img class=" h-24 w-40" src="{{ asset('images/idove_logo.png') }}" /></a>
+        @include('website.slider.promo-slider')
+    </div>
+    @include('partials.global.header')
+
+    <div class="px-96">
+        @yield('content')
 </body>
+<script src={{ asset('js/jquery.min.js', true) }}></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+<script src="{{ asset('js/datamaps.world.min.js', true) }}"></script>
+<script src={{ asset('plugins/lightbox/js/lightbox.js', true) }}></script>
+<script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
+<script src={{ asset('plugins/splide/splide.js', true) }}></script>
+<script type="text/javascript"
+    src="https://platform-api.sharethis.com/js/sharethis.js#property=5f7c3b509a89ce0012ab6f06&product=inline-share-buttons"
+    async="async"></script>
+@yield('js')
+@yield('scripts')
+
+</div>
+
+@include('partials.global.footer')
+
+
 </html>
