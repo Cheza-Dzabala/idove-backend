@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
+    protected $with = ['country_name'];
+
+    public function country_name()
+    {
+        return $this->hasOne(Country::class, 'code', 'nationality');
+    }
 
     public function getRouteKeyName()
     {

@@ -112,7 +112,7 @@ composer install
 
 3. Install Passport Keys for the API
 ```sh
-php artisan install:passport
+php artisan passport:install
 ```
 
 4. Seed Default User

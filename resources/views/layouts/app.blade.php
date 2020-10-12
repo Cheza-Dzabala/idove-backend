@@ -1,103 +1,92 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <title>iDove - @yield('title')</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="iDove Website" />
+    <meta name="keywords" content="idove, pve, african union, violent extremism" />
+    <meta content="Macheza Dzabala" name="author" />
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <!-- Bootstrap -->
+    <link href={{ asset('public/css/main/style.css') }} rel="stylesheet" type="text/css" />
+    <link href={{ asset('public/css/main/responsive.css') }} rel="stylesheet" type="text/css" />
+    <link href={{ asset('public/lightbox/css/lightbox.css') }} type="text/css" />
+    <link href={{ asset('public/splide/splide.min.css') }} type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+    {{--
+    <!-- Magnific Popup -->
+    <link href={{ asset('public/css/magnific-popup.css" rel="stylesheet', true) }} type="text/css" />
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Slider -->
+    <link rel="stylesheet" href="{{ asset('/public/css/owl.carousel.min.css', true) }}" />
+    <link rel="stylesheet" href="{{ asset('/public/css/owl.theme.default.min.css', true) }}" />
+    <!-- Icons -->
+    <link href={{ asset('public/css/materialdesignicons.min.css', true) }} rel="stylesheet" type="text/css" />
+    <!-- Css -->
+    <script type="text/javascript"
+        src="https://platform-api.sharethis.com/js/sharethis.js#property=5f7c3b509a89ce0012ab6f06&product=inline-share-buttons"
+        async="async"></script>
+    {{-- --}}
+    <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+    <script src="{{ asset('public/maps/datamaps.world.min.js', true) }}"></script>
 
-    <style>
-        .level {
-            display: flex;
-            flex: 4;
-            margin: 2px 0 18px 0;
-        }
-        .level .form-inline {
-            flex: 3;
-        }
-
-        .form-inline button {
-            margin-left: 10px;
-        }
-        .card-action {
-            font-weight: 600;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-    </style>
 </head>
+
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->username }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
-            <div class="container">
-                <div class="col-md-8">
-                    @include('layouts.flash_messages')
-                </div>
-            </div>
-            @yield('content')
-        </main>
+    <div class="top-bar">
+        <a class="top-bar-item">English</a>
     </div>
+    @include('website.header.second_bar')
+    <div class="top-bar-logo-ad">
+        <div class="logo-ad-content" style="justify-content: space-between; align-items: start">
+            <img src="{{ asset('public/images/idove_logo.png') }}" class="top-logo" />
+            @include('website.slider.promo-slider')
+        </div>
+    </div>
+
+    @include('partials.global.header')
+
+    <div class="content">
+        @yield('content')
+    </div>
+    @include('partials.global.footer')
+
+    <!-- javascript -->
+    <script src={{ asset('public/js/jquery.min.js', true) }}></script>
+    <script src={{ asset('public/lightbox/js/lightbox.js', true) }}></script>
+    <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
+    <script src={{ asset('public/splide/splide.js', true) }}></script>
+
+    {{--
+
+    <script src={{ asset('public/js/bootstrap.bundle.min.js', true) }}></script>
+    <script src={{ asset('public/js/jquery.easing.min.js', true) }}></script>
+    <script src={{ asset('public/js/scrollspy.min.js', true) }}></script>
+    <!-- Magnific Popup -->
+    <script src={{ asset('public/js/jquery.magnific-popup.min.js', true) }}></script>
+    <script src={{ asset('public/js/magnific.init.js', true) }}></script>
+    <!-- SLIDER -->
+    <script src={{ asset('public/js/owl.carousel.min.js', true) }}></script>
+    <script src={{ asset('public/js/owl.init.js', true) }}></script>
+    <!-- Icons -->
+    <script src={{ asset('public/js/feather.min.js', true) }}></script>
+
+    <!-- Main Js -->
+    <script src={{ asset('public/js/app.js', true) }}></script>
+
+
+    --}}
+    @yield('js')
+    @yield('scripts')
 </body>
+
 </html>

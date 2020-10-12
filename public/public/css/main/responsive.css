@@ -1,0 +1,98 @@
+/** Media 600px */
+@media only screen and (max-width: 600px) {
+
+    p {
+        font-size: 0.8rem;
+    }
+    h1 {
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+    header {
+        display: flex;
+    justify-content: start;
+    }
+    .navigation {
+        flex-direction: column;
+        padding: 2px;
+        display: none;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .visible {
+        display: block;
+    }
+
+    .navigation-menu {
+        width: 100vw;
+        flex-direction: column;
+    }
+
+    .nav-item {
+        justify-content: start;
+    }
+    .hamburger {
+        display: block;
+    }
+
+    .top-bar-logo-ad{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: start;
+    }
+
+    .logo-ad-content{
+        width: 100vw;
+    }
+
+    .top-logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .footer {
+        flex-direction: column;
+        justify-content: start;
+        align-content: center;
+    }
+
+    .footer-row {
+        flex-direction: column;
+        padding: 20px 20px;
+    }
+
+    .footer-item {
+        width: 80vw;
+    }
+
+
+    .section-content {
+        width: 80vw;
+    }
+
+    .map-container {
+        width: 60vw;
+        height: 500px;
+        }
+}
+/** End Media 600px */
+
+/** Media 700px */
+
+@media only screen and(min-width: 700px) {
+
+    .navigation {
+        flex-direction: column;
+        display: block;
+    }
+
+    .hamburger {
+        display: none;
+    }
+
+}
+/** End Media 700px */

@@ -3,83 +3,50 @@
 namespace App\Http\Controllers;
 
 use App\Groups;
-use Illuminate\Http\Request;
+use App\Http\Requests\GroupRequest;
+use App\Http\Resources\Groups as GroupsResource;
+use App\Utilities\Images\ImageProcessor;
+use Illuminate\Support\Facades\Auth;
 
 class GroupsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $groups = new GroupsResource(
+            Groups::with(['members'])->whereHas('members', function($q){
+                $q->where('user_id', '=', Auth::user()->id);
+            })
+            ->orWhere('admin_id', '=', Auth::user()->id)->get()
+        );
+        return response()->json([
+            'message' => 'Your groups',
+            'data' => $groups
+        ], 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create(GroupRequest $request)
     {
-        //
-    }
+        $group = new Groups();
+        $group->admin_id = Auth::user()->id;
+        $group->fill($request->toArray());
+        $processor = new ImageProcessor();
+        $avatar = $request->avatar;
+        if ($avatar) {
+            $group->avatar  = $processor->resize(
+                $avatar,
+                Auth::user()->username . '_group_' . uniqid(),
+                300,
+                300,
+                ImageProcessor::$IMAGES_PATH . '/'
+            );
+        }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $group->save();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Groups  $groups
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Groups $groups)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Groups  $groups
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Groups $groups)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Groups  $groups
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Groups $groups)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Groups  $groups
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Groups $groups)
-    {
-        //
+        return response()->json([
+            'message' => 'Successfully created group',
+            'data' => $group
+        ], 201);
     }
 }

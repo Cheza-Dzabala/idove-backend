@@ -15,7 +15,7 @@
             </tr>
             <tr>
                 <td class="esd-block-text es-p20t es-p20b es-p30r es-p30l es-m-txt-l" bgcolor="#ffffff" align="center">
-                    <p>Please follow <a href="{{ env('FRONTEND_PATH').'/verify-account?token='.$token }}">this link</a> to activate your account. <br/>
+                    <p>Please follow <a href="{{ 'https://idove.page.link/verify/?token='.$token }}">this link</a> to activate your account. <br/>
                     </p>
                     <small>If you cannot click the link, copy and past this url into your browser. {{ env('FRONTEND_PATH').'/verify-account?token='.$token }}</small>
                 </td>
